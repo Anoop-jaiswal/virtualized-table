@@ -20,6 +20,16 @@ This project is a high-performance, feature-rich virtualized table built with Re
 
 - **Column Visibility Toggle:** Users can easily hide or unhide columns via an intuitive UI.
 
-- **Full Row & Column Virtualization:** Both rows and columns are virtualized to handle very wide and tall tables efficiently.
-
 - **Smooth User Experience:** Responsive design with smooth scrolling and interactions, even with large datasets.
+
+## Tech Stack
+
+- **React** (with [Vite](https://vitejs.dev/)) — Fast build tool and development server for React apps  
+- **TypeScript** — Typed JavaScript for better developer experience and reliability  
+- **TailwindCSS** — Utility-first CSS framework for styling  
+- **@tanstack/react-table** — Headless UI for building powerful tables  
+- **@tanstack/react-virtual** — Virtualization library for efficient rendering of large lists and grids  
+- **React Router** — Routing library for React applications  
+- **i18next & react-i18next** — Internationalization libraries for multi-language support  
+
+
