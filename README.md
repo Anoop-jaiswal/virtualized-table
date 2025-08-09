@@ -1,69 +1,25 @@
-# React + TypeScript + Vite
+# Virtualized Table Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a high-performance, feature-rich virtualized table built with React. It efficiently handles large datasets with thousands of rows and dozens of columns, providing an excellent user experience even with heavy data loads.
 
-Currently, two official plugins are available:
+## Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Massive Data Support:** Smooth rendering of tables with 2000+ rows and 80 columns through row and column virtualization, drastically improving performance by only rendering visible content.
 
-## Expanding the ESLint configuration
+- **Row Virtualization:** Only visible rows are rendered to the DOM, ensuring fast scrolling and minimal resource consumption.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Internationalization (i18n):** Full multi-language support implemented for easy localization of all UI texts and messages.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Column Pinning:** Columns can be pinned to the left or right, enabling persistent visibility while scrolling horizontally through large datasets.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **Sorting:** Users can sort row data in ascending or descending order on any column.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Resizable Columns:** Columns can be resized by dragging their edges, allowing flexible adjustment of column widths.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Column Reordering:** Drag-and-drop support to reorder columns dynamically.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Column Visibility Toggle:** Users can easily hide or unhide columns via an intuitive UI.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Full Row & Column Virtualization:** Both rows and columns are virtualized to handle very wide and tall tables efficiently.
+
+- **Smooth User Experience:** Responsive design with smooth scrolling and interactions, even with large datasets.
