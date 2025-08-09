@@ -108,16 +108,6 @@ export const TableHeader = ({ header }: TableHeaderProps) => {
                   Unpin
                 </li>
               )}
-
-              <li
-                className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                onClick={() => {
-                  header.column.getToggleSortingHandler();
-                  setOpen(false);
-                }}
-              >
-                {isSorted === "desc" ? "Sort Asc" : "Sort Desc"}
-              </li>
             </ul>
           </div>
         )}
