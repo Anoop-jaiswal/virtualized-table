@@ -1,7 +1,7 @@
 import { createColumnHelper } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
-import { USERS } from "../../data";
-import type { User } from "../../types";
+import { USERS } from "../../mocks/data";
+import type { User } from "../../types/userTypes";
 
 const DISPLAY_COLUMN_SIZE = 100;
 const MAX_CELL_CHAR = 30;

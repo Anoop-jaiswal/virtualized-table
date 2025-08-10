@@ -1,5 +1,4 @@
 export type User = {
-  // Identification
   id: number;
   userId: string;
   username: string;
@@ -11,7 +10,6 @@ export type User = {
   suffix: string;
   age: number;
 
-  // Contact
   email: string;
   phone: string;
   altPhone: string;
@@ -21,7 +19,6 @@ export type User = {
   ipV6: string;
   macAddress: string;
 
-  // Location
   street: string;
   city: string;
   state: string;
@@ -32,7 +29,6 @@ export type User = {
   longitude: number;
   timeZone: string;
 
-  // Dates
   birthDate: Date;
   registeredAt: Date;
   lastLogin: Date;
@@ -41,7 +37,6 @@ export type User = {
   licenseIssued: Date;
   licenseExpiry: Date;
 
-  // Work & Education
   jobTitle: string;
   jobType: string;
   company: string;
@@ -50,7 +45,6 @@ export type User = {
   education: string;
   university: string;
 
-  // Finance
   creditCardNumber: string;
   creditCardCVV: string;
   iban: string;
@@ -59,7 +53,6 @@ export type User = {
   bitcoinAddress: string;
   amount: string;
 
-  // Commerce & Product
   productName: string;
   productCategory: string;
   productPrice: string;
@@ -67,7 +60,6 @@ export type User = {
   material: string;
   sku: string;
 
-  // Internet & System
   password: string;
   uuid: string;
   fileName: string;
@@ -76,20 +68,17 @@ export type User = {
   networkProtocol: string;
   urlSlug: string;
 
-  // Science / Misc
   chemicalElement: string;
   unitName: string;
   booleanFlag: boolean;
   rating: number;
   votes: number;
 
-  // Text content
   shortBio: string;
   paragraph: string;
   quote: string;
   hashtag: string;
 
-  // Miscellaneous
   vehicle: string;
   licensePlate: string;
   airline: string;
@@ -97,6 +86,5 @@ export type User = {
   musicGenre: string;
   movieTitle: string;
 
-  // Extra runtime field for table row tracking
   rowId?: number;
 };

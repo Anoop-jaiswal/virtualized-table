@@ -13,7 +13,7 @@ import "./index.css";
 import { fuzzyFilter } from "./Table.utils";
 import { ColumnVisibilitySelector } from "./ColumnVisibilitySelector";
 
-import type { User } from "../../types";
+import type { User } from "../../types/userTypes";
 import { useTableData } from "./useTableData";
 import { TableHeader } from "./TableHeader";
 

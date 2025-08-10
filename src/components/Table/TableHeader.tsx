@@ -3,7 +3,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { ChevronDown, ChevronUp, MoreVertical } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import type { User } from "../../types";
+import type { User } from "../../types/userTypes";
 
 interface TableHeaderProps {
   header: Header<User, unknown>;
@@ -13,7 +13,6 @@ interface TableHeaderProps {
 export const TableHeader = ({ header }: TableHeaderProps) => {
   const isPinned = header.column.getIsPinned();
   const isSorted = header.column.getIsSorted();
-
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -52,84 +51,85 @@ export const TableHeader = ({ header }: TableHeaderProps) => {
       {...attributes}
       style={style}
       colSpan={header.colSpan}
-      className="select-none relative"
+      className="relative select-none"
     >
-      <div
-        {...listeners}
-        className="absolute left-1.5 top-1/2 -translate-y-1/2 cursor-grab z-30 select-none"
-        style={{ userSelect: "none" }}
-      >
-        <span className="text-xs opacity-50">::</span>
-      </div>
-
-      <div className="absolute right-2 top-2 z-40" ref={menuRef}>
-        <button
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Options"
-          className="text-black p-1 rounded hover:bg-gray-200 focus:outline-none"
-          type="button"
+      <div className="flex items-center justify-between px-2 ">
+        <div
+          {...listeners}
+          className="cursor-grab select-none flex items-center mr-2"
+          style={{ userSelect: "none" }}
         >
-          <MoreVertical size={16} />
-        </button>
+          <span className="text-xs opacity-50 leading-none">::</span>
+        </div>
 
-        {open && (
-          <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded shadow-lg text-black text-sm z-50">
-            <ul>
-              {isPinned !== "right" && (
-                <li
-                  className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                  onClick={() => {
-                    header.column.pin("right");
-                    setOpen(false);
-                  }}
-                >
-                  Pin to Right
-                </li>
-              )}
-              {isPinned !== "left" && (
-                <li
-                  className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                  onClick={() => {
-                    header.column.pin("left");
-                    setOpen(false);
-                  }}
-                >
-                  Pin to Left
-                </li>
-              )}
-              {isPinned && (
-                <li
-                  className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                  onClick={() => {
-                    header.column.pin(false);
-                    setOpen(false);
-                  }}
-                >
-                  Unpin
-                </li>
-              )}
-            </ul>
-          </div>
-        )}
-      </div>
+        <div className="flex items-center gap-1 flex-1 justify-center truncate">
+          {!header.isPlaceholder && (
+            <span className="text-sm font-medium truncate">
+              {header.column.columnDef.header
+                ? typeof header.column.columnDef.header === "function"
+                  ? header.column.columnDef.header(header.getContext())
+                  : header.column.columnDef.header
+                : null}
+            </span>
+          )}
+          {isSorted && (
+            <span className="inline-block">
+              {isSorted === "asc" && <ChevronDown size={14} />}
+              {isSorted === "desc" && <ChevronUp size={14} />}
+            </span>
+          )}
+        </div>
 
-      <div className="flex justify-center items-center gap-1 select-text">
-        {!header.isPlaceholder && (
-          <span className="text-sm font-medium">
-            {header.column.columnDef.header
-              ? typeof header.column.columnDef.header === "function"
-                ? header.column.columnDef.header(header.getContext())
-                : header.column.columnDef.header
-              : null}
-          </span>
-        )}
+        <div className="relative" ref={menuRef}>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Options"
+            className="text-gray-600 hover:text-black p-1 rounded hover:bg-gray-200 focus:outline-none"
+            type="button"
+          >
+            <MoreVertical size={16} />
+          </button>
 
-        {isSorted && (
-          <span className="inline-block">
-            {isSorted === "asc" && <ChevronDown size={14} />}
-            {isSorted === "desc" && <ChevronUp size={14} />}
-          </span>
-        )}
+          {open && (
+            <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded shadow-lg text-black text-sm z-50">
+              <ul>
+                {isPinned !== "right" && (
+                  <li
+                    className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                    onClick={() => {
+                      header.column.pin("right");
+                      setOpen(false);
+                    }}
+                  >
+                    Pin to Right
+                  </li>
+                )}
+                {isPinned !== "left" && (
+                  <li
+                    className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                    onClick={() => {
+                      header.column.pin("left");
+                      setOpen(false);
+                    }}
+                  >
+                    Pin to Left
+                  </li>
+                )}
+                {isPinned && (
+                  <li
+                    className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                    onClick={() => {
+                      header.column.pin(false);
+                      setOpen(false);
+                    }}
+                  >
+                    Unpin
+                  </li>
+                )}
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
 
       <div

@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import type { User } from "./types";
+import type { User } from "../types/userTypes";
 
 faker.seed(124);
 
