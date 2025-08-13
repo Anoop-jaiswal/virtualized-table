@@ -4,7 +4,6 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
-  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
@@ -49,12 +48,9 @@ export default function Table() {
     columnResizeMode: "onChange",
     defaultColumn,
     getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     filterFns: { fuzzy: fuzzyFilter },
     globalFilterFn: fuzzyFilter,
-    enableRowSelection: true,
-    getRowCanExpand: () => true,
     initialState: {
       columnVisibility: initialColumnVisibility,
       columnOrder: columnIds,
@@ -160,7 +156,6 @@ export default function Table() {
                     <tr
                       style={{
                         background: row.getIsSelected() ? "#3c3c80ff" : "white",
-                        color: row.getIsSelected() ? "white" : "black",
                         height: `${virtualRow.size}px`,
                       }}
                     >

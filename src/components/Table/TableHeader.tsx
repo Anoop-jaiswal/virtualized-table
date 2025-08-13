@@ -1,7 +1,7 @@
 import type { Header } from "@tanstack/react-table";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { ChevronDown, ChevronUp, MoreVertical } from "lucide-react";
+import { MoreVertical } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import type { User } from "../../types/userTypes";
 
@@ -12,7 +12,6 @@ interface TableHeaderProps {
 
 export const TableHeader = ({ header }: TableHeaderProps) => {
   const isPinned = header.column.getIsPinned();
-  const isSorted = header.column.getIsSorted();
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -70,12 +69,6 @@ export const TableHeader = ({ header }: TableHeaderProps) => {
                   ? header.column.columnDef.header(header.getContext())
                   : header.column.columnDef.header
                 : null}
-            </span>
-          )}
-          {isSorted && (
-            <span className="inline-block">
-              {isSorted === "asc" && <ChevronDown size={14} />}
-              {isSorted === "desc" && <ChevronUp size={14} />}
             </span>
           )}
         </div>

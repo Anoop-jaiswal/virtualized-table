@@ -16,30 +16,26 @@ export const useTableData = () => {
   );
 
   const fieldColumns = useMemo(() => {
-    return allKeys
-      .filter(
-        (key) => !["id", "avatar", "name", "birthDate", "age"].includes(key)
-      )
-      .map((key) =>
-        columnHelper.accessor(key as keyof User, {
-          id: key,
-          header: key,
-          size: DISPLAY_COLUMN_SIZE,
-          cell: (info) => {
-            const value = String(info.getValue() ?? "");
-            const isLong = value.length > MAX_CELL_CHAR;
-            return (
-              <div
-                className="truncate"
-                title={isLong ? "Click + to view full" : undefined}
-                style={{ maxWidth: "100%" }}
-              >
-                {isLong ? value.slice(0, MAX_CELL_CHAR) + "..." : value}
-              </div>
-            );
-          },
-        })
-      );
+    return allKeys.map((key) =>
+      columnHelper.accessor(key as keyof User, {
+        id: key,
+        header: key,
+        size: DISPLAY_COLUMN_SIZE,
+        cell: (info) => {
+          const value = String(info.getValue() ?? "");
+          const isLong = value.length > MAX_CELL_CHAR;
+          return (
+            <div
+              className="truncate"
+              title={isLong ? "Click + to view full" : undefined}
+              style={{ maxWidth: "100%" }}
+            >
+              {isLong ? value.slice(0, MAX_CELL_CHAR) + "..." : value}
+            </div>
+          );
+        },
+      })
+    );
   }, [allKeys]);
 
   const columns = useMemo(() => [...fieldColumns], [fieldColumns, setData]);
